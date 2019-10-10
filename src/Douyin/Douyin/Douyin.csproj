@@ -1,8 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFrameworks>netcoreapp2.1;net461</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
+
   <ItemGroup>
     <Compile Update="**\*.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
@@ -10,9 +11,50 @@
     <AvaloniaResource Include="**\*.xaml">
       <SubType>Designer</SubType>
     </AvaloniaResource>
+    <AvaloniaResource Include="Assets\*" />
+    <AvaloniaResource Include="Assets\Fonts\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Remove="Pages\ControllerPanelControl.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Fonts\SourceSansPro-Bold.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\SourceSansPro-BoldItalic.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\SourceSansPro-Italic.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\SourceSansPro-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.8.0" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.8.0" />
+    <PackageReference Include="Avalonia" Version="0.8.999-cibuild0004376-beta" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.8.999-cibuild0004376-beta" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.8.999-cibuild0004376-beta" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.8.999-cibuild0004376-beta" />
+    <PackageReference Include="LibVLCSharp" Version="3.2.3" />
+    <PackageReference Include="LibVLCSharp.Forms" Version="3.2.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3-beta1" />
+    <PackageReference Include="System.Globalization" Version="4.3.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.3" />
+    <PackageReference Include="VitalElement.CefGlue.Core" Version="0.9.0-build32-alpha" />
+    <PackageReference Include="VitalElement.CefGlue.Core.Avalonia" Version="0.9.0-build32-alpha" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore">
+      <HintPath>C:\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.0.0-preview9-19423-09\ref\netcoreapp3.0\PresentationCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Pages\ControllerPanelControl.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Pages\ControllerPanelControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
 </Project>

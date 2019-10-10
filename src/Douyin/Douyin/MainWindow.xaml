@@ -1,9 +1,65 @@
-﻿<Window xmlns="https://github.com/avaloniaui"
+﻿<Window xmlns="https://github.com/avaloniaui" 
+        MinWidth="500" 
+        MinHeight="300"
+        Width="1024" 
+        Height="800"
+        xmlns:pages="clr-namespace:Douyin.Pages"
+        Title="抖音直播客户端"
+        xmlns:local="clr-namespace:Douyin"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="Douyin.MainWindow"
-        Title="Douyin">
-    Welcome to Avalonia!
+        xmlns:vm="clr-namespace:Douyin.ViewModels"
+        xmlns:v="clr-namespace:Douyin.Views"
+        x:Class="Douyin.MainWindow" 
+        WindowStartupLocation="CenterScreen"
+        HasSystemDecorations="false"
+        >
+    <Window.DataTemplates>
+        <DataTemplate DataType="vm:NotificationViewModel">
+            <v:CustomNotificationView />
+        </DataTemplate>
+    </Window.DataTemplates>
+  <Grid RowDefinitions="2,*,2" ColumnDefinitions="2,*,2" Background="#161823">
+    <DockPanel  Grid.Column="1"  Grid.Row="1" >
+      <Grid Name="TitleBar" Background="#161823" DockPanel.Dock="Top" ColumnDefinitions="Auto,*,Auto">
+        <Image Grid.Column="0" Source="/Assets/logowithtitle.png" Height="36" Width="100" Margin="10"  Stretch="UniformToFill"/>
+        <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="2,0,0,0" FontSize="20" FontWeight="500" Foreground="White">·PC客户端</TextBlock>
+        <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="10">
+          <StackPanel.Styles>
+            <Style Selector="Button">
+              <Setter Property="Margin" Value="2"/>
+              <Setter Property="Background" Value="#161823"/>
+              <Setter Property="BorderThickness" Value="0"/>
+              <Setter Property="Width" Value="34"/>
+              <Setter Property="Height" Value="34"/>
+            </Style>
+          </StackPanel.Styles>
+          <Button Name="SettingButton">
+            <Path Height="36" Margin="0,10,0,0" Stretch="Uniform" Fill="#FFFFFF" Data="M510.0032 864.1536c0 24.1152 16.2816 41.6768 38.7584 41.6768h436.48c22.4768 0 38.7584-17.5616 38.7584-41.6768 0-24.1664-16.2816-41.6768-38.7584-41.6768h-436.48c-22.4768 0-38.7584 17.5104-38.7584 41.6768z m0-704.3072c0 24.1664 16.2816 41.6768 38.7584 41.6768h436.48c22.4768 0 38.7584-17.5104 38.7584-41.6768 0-24.1152-16.2816-41.6768-38.7584-41.6768h-436.48c-22.4768 0-38.7584 17.5616-38.7584 41.6768zM512.512 512c0-24.1664-16.2304-41.6768-38.6048-41.6768h-435.2C16.2304 470.3232 0 487.8336 0 512c0 24.1664 16.2304 41.6768 38.656 41.6768h435.2c22.3744 0 38.6048-17.5104 38.6048-41.6768z m-51.6096 352.1536c0-87.7056-69.8368-159.0784-155.6992-159.0784-70.3488 0-131.1744 48.5376-149.8112 117.4016H40.8064c-23.6544 0-40.8064 17.5104-40.8064 41.6768 0 24.1152 17.152 41.6768 40.8064 41.6768h114.5344c18.6368 68.8128 79.4624 117.3504 149.8112 117.3504C391.0144 1023.1808 460.8 951.808 460.8 864.1536zM305.152 939.8272c-40.9088 0-74.1376-33.9456-74.1376-75.6736 0-41.7792 33.28-75.7248 74.1376-75.7248 40.8576 0 74.0864 33.9456 74.0864 75.7248 0 41.728-33.28 75.6736-74.0864 75.6736zM460.8 159.8464C460.8512 72.192 391.0144 0.8192 305.152 0.8192c-70.3488 0-131.1744 48.5376-149.8112 117.3504H40.8064c-23.6544 0-40.8064 17.5616-40.8064 41.6768 0 24.1664 17.152 41.6768 40.8064 41.6768h114.5344C173.9776 270.3872 234.8032 318.976 305.152 318.976 391.0144 318.9248 460.8 247.552 460.8 159.8464zM305.152 235.5712c-40.9088 0-74.1376-33.9456-74.1376-75.7248 0-41.728 33.28-75.6736 74.1376-75.6736 40.8576 0 74.0864 33.9456 74.0864 75.6736 0 41.7792-33.28 75.7248-74.0864 75.7248z m563.5072 318.1056h114.5344c23.6544 0 40.8064-17.5104 40.8064-41.6768 0-24.1664-17.152-41.6768-40.8064-41.6768h-114.5344c-18.6368-68.864-79.4624-117.3504-149.8112-117.3504C632.9856 352.9728 563.2 424.2944 563.2 512c0 87.7056 69.8368 159.0272 155.6992 159.0272 70.3488 0 131.1744-48.4864 149.8112-117.3504z m-149.8112 34.048c-40.8576 0-74.0864-33.9968-74.0864-75.7248 0-41.728 33.28-75.7248 74.0864-75.7248 40.9088 0 74.1376 33.9968 74.1376 75.7248 0 41.728-33.28 75.7248-74.1376 75.7248z"></Path>
+          </Button>
+          <Button Name="MinimizeButton">
+            <Path Height="36" Margin="0,40,0,0" Stretch="Uniform" Fill="#FFFFFF" Data="M984.615385 955.076923c0 15.753846-13.784615 29.538462-29.538462 29.538462h-886.153846c-15.753846 0-29.538462-13.784615-29.538462-29.538462v-59.076923c0-15.753846 13.784615-29.538462 29.538462-29.538462h886.153846c15.753846 0 29.538462 13.784615 29.538462 29.538462v59.076923z"></Path>
+          </Button>
+          <Button Name="MaximizeButton">
+            <Path Height="36" Margin="0,10,0,0" Stretch="Uniform" Fill="#FFFFFF" Data="M96 96v832h832V96H96z m83.2 83.2h665.6v665.6H179.2V179.2z"></Path>
+          </Button>
+          <Button Name="CloseButton">
+            <Path Height="36" Margin="0,10,0,0" Stretch="Uniform" Fill="#FFFFFF" Data="M1012.51436242 112.30353045L911.69646955 11.48563758 512 411.18210711 112.30353045 11.48563758 11.48563758 112.30353045 411.18210711 512 11.48563758 911.69646955 112.30353045 1012.51436242 512 612.81789289 911.69646955 1012.51436242 1012.51436242 911.69646955 612.81789289 512z"></Path>
+          </Button>
+        </StackPanel>
+      </Grid>
+      <Border Background="#0E0F1A" Margin="5">
+        <Panel>
+          <local:MainView/>
+        </Panel>
+      </Border>
+    </DockPanel>
+    <Border Name="TopLeft" Background="Red"/>
+    <Border Name="TopRight" Background="Red" Grid.Column="2" />
+    <Border Name="BottomLeft" Background="Red" Grid.Row="2" />
+    <Border Name="BottomRight" Background="Red"  Grid.Row="2" Grid.Column="2"/>
+    <Border Name="Top" Background="Blue" Grid.Column="1" />
+    <Border Name="Right" Background="Blue" Grid.Row="1"  Grid.Column="2" />
+    <Border Name="Bottom" Background="Blue" Grid.Row="2" Grid.Column="1"  />
+    <Border Name="Left" Background="Blue"  Grid.Row="1" />
+  </Grid>
 </Window>
