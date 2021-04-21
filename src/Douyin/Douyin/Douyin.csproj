@@ -34,7 +34,7 @@
     <PackageReference Include="LibVLCSharp.Forms" Version="3.2.3" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3-beta1" />
     <PackageReference Include="System.Globalization" Version="4.3.0" />
-    <PackageReference Include="System.Net.Http" Version="4.3.3" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="VitalElement.CefGlue.Core" Version="0.9.0-build32-alpha" />
     <PackageReference Include="VitalElement.CefGlue.Core.Avalonia" Version="0.9.0-build32-alpha" />
   </ItemGroup>
